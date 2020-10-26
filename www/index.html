@@ -38,6 +38,10 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+
+        $('#btnD').click(function(e){
+            btnDClick(e);
+        });
         init();
     });
     
@@ -161,6 +165,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
         
     }
 
@@ -183,6 +188,7 @@
     
     // ButtonAがクリックされた時の処理
     function btnAClick(e){
+      alarm();
       active = true;
       startTime = new Date();
         
@@ -191,6 +197,7 @@
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
+      alarm();
       active = false;
         
         
@@ -200,11 +207,16 @@
     function btnCClick(e){
         alarm();
         active =  false;
-        period = 60* parseInt($("#minute").val()) + parseInt($("#second").val());
+        period = 3600* parseInt($("#hour").val()) + 60* parseInt($("#minute").val()) + parseInt($("#second").val());
         $("#time").html("経過時間：０");
         $("#remain").html("残り時間：" + period);
         
 
+    }
+
+    function btnDClick(e){
+        alarm();
+       
     }
     
  
@@ -235,10 +247,12 @@
 
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
-    <button id="btnA">ButtonA</button>  
-    <button id="btnB">ButtonB</button>  
-    <button id="btnC">ButtonC</button>  
+    <button id="btnA">タイマー開始</button>  
+    <button id="btnB">タイマー停止</button>  
+    <button id="btnC">タイマーセット</button>  
+    <button id="btnD">タイマーリセット(何の意味もない）</button>
     <input type="number" id="minute" value=3 >
     <input type="number" id="second" value=0 >
+    <input type="number" id="huor" value=0 >
 </body>
 </html>
